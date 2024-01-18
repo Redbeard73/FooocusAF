@@ -1,6 +1,7 @@
 import os
 import json
 import math
+import shutil
 import numbers
 import args_manager
 import modules.flags
@@ -114,6 +115,31 @@ def get_dir_or_set_default(key, default_value):
         os.makedirs(dp, exist_ok=True)
         config_dict[key] = dp
         return dp
+
+
+def copy_directory(src, dst):
+    print("Copying {source_directory} to {destination_directory}...")
+    if not os.path.exists(dst):
+        os.makedirs(dst)
+
+    for item in os.listdir(src):
+        src_path = os.path.join(src, item)
+        dst_path = os.path.join(dst, item)
+
+        if os.path.isdir(src_path):
+            copy_directory(src_path, dst_path)
+        else:
+            if not os.path.exists(dst_path):
+                shutil.copy2(src_path, dst_path)
+                print(f"Copied: {src_path} to {dst_path}")
+            else:
+                print(f"File already exists: {dst_path}")
+    print("Done Copying")
+
+
+source_directory = "/content/drive/MyDrive/Models"
+destination_directory = "/content/FooocusAF/models"
+copy_directory(source_directory, destination_directory)
 
 
 path_checkpoints = get_dir_or_set_default('path_checkpoints', '../models/checkpoints/')
