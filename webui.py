@@ -106,14 +106,6 @@ def handle_prompt_selection(title, prompts):
             return prompt['text']
     return ""
 
-# Link dropdown selections to textboxes
-positive_prompt_dropdown.change(fn=lambda x: handle_prompt_selection(x, prompt_data['Prompts']),
-                                inputs=positive_prompt_dropdown,
-                                outputs=prompt)
-
-negative_prompt_dropdown.change(fn=lambda x: handle_prompt_selection(x, prompt_data['Negatives']),
-                                inputs=negative_prompt_dropdown,
-                                outputs=negative_prompt)
 
 with shared.gradio_root:
     with gr.Row():
