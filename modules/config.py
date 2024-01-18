@@ -131,9 +131,9 @@ def copy_directory(src, dst):
         else:
             if not os.path.exists(dst_path):
                 shutil.copy2(src_path, dst_path)
-                print(f"Copied: {src_path} to {dst_path}")
+                print(f"\033[92mCopied: {src_path} to {dst_path}\033[0m")
             else:
-                print(f"File already exists: {dst_path}")
+                print(f"\033[93mFile already exists: {dst_path}\033[0m")
     print(f"\033[94mDone Copying\033[0m")
 
 
