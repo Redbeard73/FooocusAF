@@ -118,7 +118,7 @@ def get_dir_or_set_default(key, default_value):
 
 
 def copy_directory(src, dst):
-    print("Copying {source_directory} to {destination_directory}...")
+    print(f"\033[94mCopying {source_directory} to {destination_directory}...\033[0m")
     if not os.path.exists(dst):
         os.makedirs(dst)
 
@@ -134,7 +134,7 @@ def copy_directory(src, dst):
                 print(f"Copied: {src_path} to {dst_path}")
             else:
                 print(f"File already exists: {dst_path}")
-    print("Done Copying")
+    print(f"\033[94mDone Copying\033[0m")
 
 
 source_directory = "/content/drive/MyDrive/Models"
