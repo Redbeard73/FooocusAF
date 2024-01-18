@@ -88,25 +88,6 @@ shared.gradio_root = gr.Blocks(
     title=title,
     css=modules.html.css).queue()
 
-# Load prompts from JSON
-prompt_data = import_json.load_prompts("jsonAF/prompts.json")
-
-# Dropdown for positive prompts
-positive_prompt_titles = [prompt['title'] for prompt in prompt_data['Prompts']]
-positive_prompt_dropdown = gr.Dropdown(label='Positive Prompts', choices=positive_prompt_titles)
-
-# Dropdown for negative prompts
-negative_prompt_titles = [prompt['title'] for prompt in prompt_data['Negatives']]
-negative_prompt_dropdown = gr.Dropdown(label='Negative Prompts', choices=negative_prompt_titles)
-
-# Function to handle prompt selection
-def handle_prompt_selection(title, prompts):
-    for prompt in prompts:
-        if prompt['title'] == title:
-            return prompt['text']
-    return ""
-
-
 with shared.gradio_root:
     with gr.Row():
         with gr.Column(scale=2):
